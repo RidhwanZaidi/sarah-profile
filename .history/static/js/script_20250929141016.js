@@ -1,57 +1,54 @@
 // Contact handling functions
 async function handlePhoneContact() {
     try {
-        const response = await fetch('/api/contact/phone', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        // Get phone number from the page
+        const phoneElement = document.querySelector('.contact-card .contact-value');
+        const phoneNumber = phoneElement ? phoneElement.textContent.trim() : '016-4282828';
         
-        const data = await response.json();
+        // Try to initiate phone call
+        const phoneLink = document.createElement('a');
+        phoneLink.href = `tel:${phoneNumber}`;
+        phoneLink.style.display = 'none';
+        document.body.appendChild(phoneLink);
+        phoneLink.click();
+        document.body.removeChild(phoneLink);
         
-        if (data.success) {
-            // Create a temporary link to initiate phone call
-            const phoneLink = document.createElement('a');
-            phoneLink.href = `tel:${data.phone}`;
-            phoneLink.click();
-            
-            // Show success message
-            showNotification('Phone contact initiated!', 'success');
-        } else {
-            showNotification('Failed to initiate phone contact', 'error');
-        }
+        // Show success message
+        showNotification(`Calling ${phoneNumber}...`, 'success');
+        
+        // Also log the action for analytics
+        console.log('Phone contact initiated:', phoneNumber);
+        
     } catch (error) {
-        console.error('Error:', error);
-        showNotification('Failed to initiate phone contact', 'error');
+        console.error('Error initiating phone call:', error);
+        showNotification('Unable to initiate phone call. Please dial manually.', 'error');
     }
 }
 
 async function handleEmailContact() {
     try {
-        const response = await fetch('/api/contact/email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        // Get email from the page
+        const emailElements = document.querySelectorAll('.contact-card .contact-value');
+        const emailElement = Array.from(emailElements).find(el => el.textContent.includes('@'));
+        const emailAddress = emailElement ? emailElement.textContent.trim() : 'maisarah@otamy.net';
         
-        const data = await response.json();
+        // Try to initiate email
+        const emailLink = document.createElement('a');
+        emailLink.href = `mailto:${emailAddress}`;
+        emailLink.style.display = 'none';
+        document.body.appendChild(emailLink);
+        emailLink.click();
+        document.body.removeChild(emailLink);
         
-        if (data.success) {
-            // Create a temporary link to initiate email
-            const emailLink = document.createElement('a');
-            emailLink.href = `mailto:${data.email}`;
-            emailLink.click();
-            
-            // Show success message
-            showNotification('Email contact initiated!', 'success');
-        } else {
-            showNotification('Failed to initiate email contact', 'error');
-        }
+        // Show success message
+        showNotification(`Opening email to ${emailAddress}...`, 'success');
+        
+        // Also log the action for analytics
+        console.log('Email contact initiated:', emailAddress);
+        
     } catch (error) {
-        console.error('Error:', error);
-        showNotification('Failed to initiate email contact', 'error');
+        console.error('Error initiating email:', error);
+        showNotification('Unable to open email client. Please copy the email address manually.', 'error');
     }
 }
 

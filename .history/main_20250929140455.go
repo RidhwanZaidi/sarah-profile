@@ -7,11 +7,14 @@ import (
 )
 
 type Profile struct {
-	Name    string `json:"name"`
-	Title   string `json:"title"`
-	Company string `json:"company"`
-	Phone   string `json:"phone"`
-	Email   string `json:"email"`
+	Name         string `json:"name"`
+	Title        string `json:"title"`
+	Company      string `json:"company"`
+	Phone        string `json:"phone"`
+	Email        string `json:"email"`
+	Experience   string `json:"experience"`
+	Projects     string `json:"projects"`
+	Satisfaction string `json:"satisfaction"`
 }
 
 func main() {
@@ -27,11 +30,14 @@ func main() {
 
 	// Profile data
 	profile := Profile{
-		Name:    "Maisarah",
-		Title:   "Senior Business Development Manager",
-		Company: "OTA MY SDN BHD",
-		Phone:   "016-4282828",
-		Email:   "maisarah@otamy.net",
+		Name:         "Maisarah",
+		Title:        "Senior Business Development Manager",
+		Company:      "OTA MY SDN BHD",
+		Phone:        "016-4282828",
+		Email:        "maisarah@otamy.net",
+		Experience:   "8+",
+		Projects:     "200+",
+		Satisfaction: "98%",
 	}
 
 	// Routes

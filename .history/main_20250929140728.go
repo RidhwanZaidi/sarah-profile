@@ -27,11 +27,14 @@ func main() {
 
 	// Profile data
 	profile := Profile{
-		Name:    "Maisarah",
-		Title:   "Senior Business Development Manager",
-		Company: "OTA MY SDN BHD",
-		Phone:   "016-4282828",
-		Email:   "maisarah@otamy.net",
+		Name:         "Maisarah",
+		Title:        "Senior Business Development Manager",
+		Company:      "OTA MY SDN BHD",
+		Phone:        "016-4282828",
+		Email:        "maisarah@otamy.net",
+		Experience:   "8+",
+		Projects:     "200+",
+		Satisfaction: "98%",
 	}
 
 	// Routes
