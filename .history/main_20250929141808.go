@@ -72,48 +72,6 @@ func main() {
 		})
 	})
 
-	// Add contact to server storage
-	r.POST("/contact", func(c *gin.Context) {
-		var newContact Contact
-		if err := c.ShouldBindJSON(&newContact); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
-		}
-
-		mu.Lock()
-		contacts = append(contacts, newContact)
-		mu.Unlock()
-
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Contact added successfully",
-			"contact": newContact,
-		})
-	})
-
-	// Get all contacts
-	r.GET("/contacts", func(c *gin.Context) {
-		mu.RLock()
-		defer mu.RUnlock()
-		c.JSON(http.StatusOK, gin.H{
-			"contacts": contacts,
-			"count":    len(contacts),
-		})
-	})
-
-	// Download contact as vCard
-	r.GET("/download-contact", func(c *gin.Context) {
-		vcard := `BEGIN:VCARD
-VERSION:3.0
-FN:Maisarah
-TEL:016-4282828
-EMAIL:maisarah@otamy.net
-ORG:OTA MY SDN BHD
-TITLE:Senior Business Development Manager
-END:VCARD`
-		c.Header("Content-Disposition", "attachment; filename=maisarah.vcf")
-		c.Data(http.StatusOK, "text/vcard", []byte(vcard))
-	})
-
 	// Health check
 	r.GET("/api/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{

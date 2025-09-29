@@ -1,51 +1,3 @@
-// Contact handling functions
-function handlePhoneContact() {
-    try {
-        // Get phone number from the page
-        const phoneElement = document.querySelector('.contact-card .contact-value');
-        const phoneNumber = phoneElement ? phoneElement.textContent.trim() : '016-4282828';
-        
-        // Create a temporary link to initiate phone call
-        const phoneLink = document.createElement('a');
-        phoneLink.href = `tel:${phoneNumber}`;
-        phoneLink.style.display = 'none';
-        document.body.appendChild(phoneLink);
-        phoneLink.click();
-        document.body.removeChild(phoneLink);
-        
-        // Show success message
-        showNotification(`Calling ${phoneNumber}...`, 'success');
-        
-    } catch (error) {
-        console.error('Error initiating phone call:', error);
-        showNotification('Unable to initiate phone call. Please dial manually.', 'error');
-    }
-}
-
-function handleEmailContact() {
-    try {
-        // Get email from the page
-        const emailElements = document.querySelectorAll('.contact-card .contact-value');
-        const emailElement = Array.from(emailElements).find(el => el.textContent.includes('@'));
-        const emailAddress = emailElement ? emailElement.textContent.trim() : 'maisarah@otamy.net';
-        
-        // Create a temporary link to initiate email
-        const emailLink = document.createElement('a');
-        emailLink.href = `mailto:${emailAddress}`;
-        emailLink.style.display = 'none';
-        document.body.appendChild(emailLink);
-        emailLink.click();
-        document.body.removeChild(emailLink);
-        
-        // Show success message
-        showNotification(`Opening email to ${emailAddress}...`, 'success');
-        
-    } catch (error) {
-        console.error('Error initiating email:', error);
-        showNotification('Unable to open email client. Please copy the email address manually.', 'error');
-    }
-}
-
 // Download contact functionality
 function downloadContact() {
     try {
@@ -58,11 +10,11 @@ function downloadContact() {
         document.body.removeChild(downloadLink);
         
         // Show success message
-        showNotification('Contact added successfully!', 'success');
+        showNotification('Contact downloaded successfully!', 'success');
         
     } catch (error) {
         console.error('Error downloading contact:', error);
-        showNotification('Unable to add contact. Please try again.', 'error');
+        showNotification('Unable to download contact. Please try again.', 'error');
     }
 }
 

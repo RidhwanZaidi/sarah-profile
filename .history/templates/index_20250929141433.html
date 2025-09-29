@@ -27,7 +27,7 @@
             <h2 class="section-title">Get In Touch</h2>
             
             <div class="contact-grid">
-                <div class="contact-card phone-card" onclick="handlePhoneContact()">
+                <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
@@ -35,9 +35,17 @@
                         <span class="contact-label">Phone</span>
                         <span class="contact-value">{{.profile.Phone}}</span>
                     </div>
+                    <div class="contact-actions">
+                        <button class="action-btn call-btn" onclick="handlePhoneContact()">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button class="action-btn add-btn" onclick="addToContacts()">
+                            <i class="fas fa-plus"></i> Add
+                        </button>
+                    </div>
                 </div>
 
-                <div class="contact-card email-card" onclick="handleEmailContact()">
+                <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
@@ -45,15 +53,15 @@
                         <span class="contact-label">Email</span>
                         <span class="contact-value">{{.profile.Email}}</span>
                     </div>
+                    <div class="contact-actions">
+                        <button class="action-btn email-btn" onclick="handleEmailContact()">
+                            <i class="fas fa-envelope"></i> Email
+                        </button>
+                        <button class="action-btn add-btn" onclick="addToContacts()">
+                            <i class="fas fa-plus"></i> Add
+                        </button>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Add to Contact Button -->
-            <div class="download-section">
-                <button class="download-btn" onclick="downloadContact()">
-                    <i class="fas fa-plus"></i>
-                    Add to Contact
-                </button>
             </div>
         </section>
 

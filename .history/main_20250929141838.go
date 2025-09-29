@@ -100,20 +100,6 @@ func main() {
 		})
 	})
 
-	// Download contact as vCard
-	r.GET("/download-contact", func(c *gin.Context) {
-		vcard := `BEGIN:VCARD
-VERSION:3.0
-FN:Maisarah
-TEL:016-4282828
-EMAIL:maisarah@otamy.net
-ORG:OTA MY SDN BHD
-TITLE:Senior Business Development Manager
-END:VCARD`
-		c.Header("Content-Disposition", "attachment; filename=maisarah.vcf")
-		c.Data(http.StatusOK, "text/vcard", []byte(vcard))
-	})
-
 	// Health check
 	r.GET("/api/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{

@@ -46,24 +46,56 @@ function handleEmailContact() {
     }
 }
 
-// Download contact functionality
-function downloadContact() {
+// Add to contacts functionality
+function addToContacts() {
     try {
-        // Create a temporary link to download the vCard
-        const downloadLink = document.createElement('a');
-        downloadLink.href = '/download-contact';
-        downloadLink.style.display = 'none';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
+        // Get contact information from the page
+        const name = 'Maisarah';
+        const title = 'Senior Business Development Manager';
+        const company = 'OTA MY SDN BHD';
+        const phone = '016-4282828';
+        const email = 'maisarah@otamy.net';
+        
+        // Create vCard content
+        const vCardContent = createVCard(name, title, company, phone, email);
+        
+        // Create and download vCard file
+        downloadVCard(vCardContent, `${name.replace(' ', '_')}.vcf`);
         
         // Show success message
-        showNotification('Contact added successfully!', 'success');
+        showNotification('Contact saved! Check your downloads folder.', 'success');
         
     } catch (error) {
-        console.error('Error downloading contact:', error);
-        showNotification('Unable to add contact. Please try again.', 'error');
+        console.error('Error saving contact:', error);
+        showNotification('Unable to save contact. Please try again.', 'error');
     }
+}
+
+// Create vCard content
+function createVCard(name, title, company, phone, email) {
+    return `BEGIN:VCARD
+VERSION:3.0
+FN:${name}
+N:${name.split(' ').reverse().join(';')};;;
+ORG:${company}
+TITLE:${title}
+TEL:${phone}
+EMAIL:${email}
+END:VCARD`;
+}
+
+// Download vCard file
+function downloadVCard(content, filename) {
+    const blob = new Blob([content], { type: 'text/vcard' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
 }
 
 // Notification system

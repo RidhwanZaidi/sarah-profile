@@ -46,23 +46,40 @@ function handleEmailContact() {
     }
 }
 
-// Download contact functionality
-function downloadContact() {
+// Add to contacts functionality
+async function addToContacts() {
     try {
-        // Create a temporary link to download the vCard
-        const downloadLink = document.createElement('a');
-        downloadLink.href = '/download-contact';
-        downloadLink.style.display = 'none';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
+        // Get contact information from the page
+        const contactData = {
+            name: 'Maisarah',
+            title: 'Senior Business Development Manager',
+            company: 'OTA MY SDN BHD',
+            phone: '016-4282828',
+            email: 'maisarah@otamy.net'
+        };
         
-        // Show success message
-        showNotification('Contact added successfully!', 'success');
+        // Send contact to server
+        const response = await fetch('/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(contactData)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            showNotification('Contact added successfully!', 'success');
+            console.log('Contact saved:', result.contact);
+        } else {
+            showNotification('Failed to add contact. Please try again.', 'error');
+            console.error('Error:', result.error);
+        }
         
     } catch (error) {
-        console.error('Error downloading contact:', error);
-        showNotification('Unable to add contact. Please try again.', 'error');
+        console.error('Error saving contact:', error);
+        showNotification('Unable to save contact. Please try again.', 'error');
     }
 }
 

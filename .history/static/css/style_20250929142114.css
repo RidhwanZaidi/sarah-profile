@@ -105,23 +105,12 @@ body {
     border: 2px solid transparent;
     transition: all 0.3s ease;
     gap: 15px;
-    cursor: pointer;
 }
 
 .contact-card:hover {
     background: #edf2f7;
     border-color: #667eea;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-}
-
-.phone-card:hover {
-    border-color: #48bb78;
-    box-shadow: 0 8px 25px rgba(72, 187, 120, 0.15);
-}
-
-.email-card:hover {
-    border-color: #667eea;
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
 }
 
@@ -160,7 +149,6 @@ body {
     color: #2d3748;
     font-weight: 600;
 }
-
 
 .download-section {
     text-align: center;

@@ -58,11 +58,11 @@ function downloadContact() {
         document.body.removeChild(downloadLink);
         
         // Show success message
-        showNotification('Contact added successfully!', 'success');
+        showNotification('Contact downloaded successfully!', 'success');
         
     } catch (error) {
         console.error('Error downloading contact:', error);
-        showNotification('Unable to add contact. Please try again.', 'error');
+        showNotification('Unable to download contact. Please try again.', 'error');
     }
 }
 

@@ -105,23 +105,12 @@ body {
     border: 2px solid transparent;
     transition: all 0.3s ease;
     gap: 15px;
-    cursor: pointer;
 }
 
 .contact-card:hover {
     background: #edf2f7;
     border-color: #667eea;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-}
-
-.phone-card:hover {
-    border-color: #48bb78;
-    box-shadow: 0 8px 25px rgba(72, 187, 120, 0.15);
-}
-
-.email-card:hover {
-    border-color: #667eea;
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
 }
 
@@ -161,36 +150,54 @@ body {
     font-weight: 600;
 }
 
-
-.download-section {
-    text-align: center;
-    margin-top: 25px;
+.contact-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
 }
 
-.download-btn {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+.action-btn {
+    padding: 8px 12px;
     border: none;
-    border-radius: 12px;
-    padding: 15px 30px;
-    font-size: 16px;
-    font-weight: 600;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    gap: 4px;
+    white-space: nowrap;
 }
 
-.download-btn:hover {
+.call-btn {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+}
+
+.call-btn:hover {
+    background: linear-gradient(135deg, #38a169, #2f855a);
+    transform: translateY(-1px);
+}
+
+.email-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.email-btn:hover {
     background: linear-gradient(135deg, #5a67d8, #6b46c1);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    transform: translateY(-1px);
 }
 
-.download-btn:active {
-    transform: translateY(0);
+.add-btn {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    color: white;
+}
+
+.add-btn:hover {
+    background: linear-gradient(135deg, #dd6b20, #c05621);
+    transform: translateY(-1px);
 }
 
 /* Stats Section */

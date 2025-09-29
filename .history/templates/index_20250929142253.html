@@ -27,7 +27,7 @@
             <h2 class="section-title">Get In Touch</h2>
             
             <div class="contact-grid">
-                <div class="contact-card phone-card" onclick="handlePhoneContact()">
+                <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
@@ -35,15 +35,25 @@
                         <span class="contact-label">Phone</span>
                         <span class="contact-value">{{.profile.Phone}}</span>
                     </div>
+                    <div class="contact-actions">
+                        <button class="action-btn call-btn" onclick="handlePhoneContact()">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                    </div>
                 </div>
 
-                <div class="contact-card email-card" onclick="handleEmailContact()">
+                <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div class="contact-details">
                         <span class="contact-label">Email</span>
                         <span class="contact-value">{{.profile.Email}}</span>
+                    </div>
+                    <div class="contact-actions">
+                        <button class="action-btn email-btn" onclick="handleEmailContact()">
+                            <i class="fas fa-envelope"></i> Email
+                        </button>
                     </div>
                 </div>
             </div>
