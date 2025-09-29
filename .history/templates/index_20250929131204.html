@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Profile.Name}} - Business Profile</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Picture Section -->
+        <div class="profile-section">
+            <div class="profile-picture">
+                <div class="glow-ring"></div>
+                <div class="profile-image">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Name and Title Section -->
+        <div class="name-section">
+            <h1 class="name">{{.Profile.Name}}</h1>
+            <div class="title-badge">
+                <span>{{.Profile.Title}}</span>
+            </div>
+        </div>
+
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-card phone-card" onclick="handlePhoneContact()">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">{{.Profile.Phone}}</div>
+                </div>
+                <div class="contact-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <div class="contact-card email-card" onclick="handleEmailContact()">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">{{.Profile.Email}}</div>
+                </div>
+                <div class="contact-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Competencies Section -->
+        <div class="tech-section">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="tech-chips">
+                {{range .Profile.TechStack}}
+                <div class="tech-chip">{{.}}</div>
+                {{end}}
+            </div>
+        </div>
+
+        <!-- Desktop-only sections -->
+        <div class="desktop-only">
+            <!-- Code Background -->
+            <div class="code-section">
+                <div class="code-background">
+                    <div class="code-line" style="left: 20px; top: 20px;">// Strategic Partnerships</div>
+                    <div class="code-line" style="left: 35px; top: 38px;">// Market Analysis</div>
+                    <div class="code-line" style="left: 50px; top: 56px;">// Revenue Growth</div>
+                    <div class="code-line" style="left: 65px; top: 74px;">// Client Relations</div>
+                    <div class="code-line" style="left: 80px; top: 92px;">// Team Leadership</div>
+                    <div class="code-line" style="left: 95px; top: 110px;">// Data-Driven Decisions</div>
+                    <div class="code-line" style="left: 110px; top: 128px;">// Process Optimization</div>
+                    <div class="code-line" style="left: 125px; top: 146px;">// Business Development</div>
+                    <div class="code-line" style="left: 140px; top: 164px;">// Sales Excellence</div>
+                    <div class="code-line" style="left: 155px; top: 182px;">// Growth Strategy</div>
+                </div>
+                <div class="code-overlay">
+                    <div class="code-icon">
+                        <i class="fas fa-trending-up"></i>
+                    </div>
+                    <h3>Driving Growth</h3>
+                    <p>Building strategic partnerships</p>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">{{.Profile.Experience}}</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{.Profile.Projects}}</div>
+                    <div class="stat-label">Deals Closed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{.Profile.Satisfaction}}</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
